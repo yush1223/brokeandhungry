@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broke & Hungry</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+    <div class="screen" id="screen-home">
+        <div class="home-header">
+            <h1 class="logo">Broke & Hungry</h1>
+            <p class="tagline">eat well, spend less</p>
+        </div>
+        <div class="mode-cards">
+            <div class="mode-card" onclick="showScreen('screen-cook')">
+                <span class="mode-emoji">🍳</span>
+                <h2>Cook Something.</h2>
+                <p>what's in your fridge?</p>
+            </div>
+            <div class="mode-card" onclick="showScreen('screen-find')">
+                <span class="mode-emoji">📍</span>
+                <h2>Find Something.</h2>
+                <p>cheap eats near you.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="screen" id="screen-cook">
+    <div class="screen-header">
+        <span class="back-arrow" onclick="showScreen('screen-home')">←</span>
+    </div>
+    <h1 class="screen-title">What's in your fridge?</h1>
+    
+    <input type="text" id="ingredient-input" class="ingredient-input" placeholder="add an ingredient...">
+    <div id="tags-container" class="tags-container"></div>
+
+    <p class="section-label">How adventurous are you?</p>
+    <div class="difficulty-toggle">
+        <button class="diff-btn active" onclick="selectDifficulty('beginner', this)">Beginner</button>
+        <button class="diff-btn" onclick="selectDifficulty('intermediate', this)">Intermediate</button>
+    </div>
+
+    <div class="spacer"></div>
+    <button class="primary-btn" onclick="getRecipe()">FIND MY RECIPE</button>
+</div>
+
+<div class="screen" id="screen-recipe">
+    <div class="screen-header">
+        <span class="back-arrow" onclick="showScreen('screen-cook')">←</span>
+    </div>
+    <h1 class="recipe-title" id="recipe-name"></h1>
+    <div class="recipe-meta">
+        <span class="badge" id="recipe-difficulty"></span>
+        <span class="meta-time" id="recipe-time"></span>
+    </div>
+    <p class="section-label">Ingredients:</p>
+    <ul class="ingredients-list" id="recipe-ingredients"></ul>
+    <p class="section-label" style="margin-top: 24px;">Steps:</p>
+    <ul class="steps-list" id="recipe-steps"></ul>
+</div>
+
+<div class="screen" id="screen-find">
+    <div class="screen-header">
+        <span class="back-arrow" onclick="showScreen('screen-home')">←</span>
+    </div>
+    <h1 class="screen-title">Cheap Eats Near You</h1>
+    <p class="tagline">what's your budget?</p>
+
+    <div class="budget-cards">
+        <div class="budget-card active" onclick="selectBudget('10', this)">
+            <h2>Under $10</h2>
+            <p>bare minimum mode</p>
+        </div>
+        <div class="budget-card" onclick="selectBudget('15', this)">
+            <h2>Under $15</h2>
+            <p>treat yourself a little</p>
+        </div>
+        <div class="budget-card" onclick="selectBudget('20', this)">
+            <h2>Under $20</h2>
+            <p>big spender energy</p>
+        </div>
+    </div>
+
+    <div class="spacer"></div>
+    <button class="primary-btn" onclick="findRestaurants()">FIND FOOD</button>
+</div>
+
+<div class="screen" id="screen-restaurants">
+    <div class="screen-header">
+        <span class="back-arrow" onclick="showScreen('screen-find')">←</span>
+    </div>
+    <h1 class="screen-title">Here's what's nearby</h1>
+    <div class="results-meta">
+        <span class="badge" id="budget-badge"></span>
+        <span class="meta-time" id="location-badge">finding location...</span>
+    </div>
+    <div id="restaurant-cards"></div>
+    <button class="secondary-btn" onclick="findMore()">find more?</button>
+</div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

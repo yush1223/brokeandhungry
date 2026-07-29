@@ -1,0 +1,325 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #ffffff;
+    color: #111111;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 0;
+    min-height: 100vh;
+}
+
+.screen {
+    display: none;
+    padding: 48px 24px 32px;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.screen.active {
+    display: flex;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: 800;
+    color: #166534;
+    margin-bottom: 4px;
+}
+
+.tagline {
+    font-size: 14px;
+    color: #999999;
+    margin-bottom: 48px;
+}
+
+.mode-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mode-card {
+    background: #f0f0f0;
+    border: 1.5px solid #166534;
+    border-radius: 16px;
+    padding: 32px 24px;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+
+.mode-card:active {
+    background: #dcfce7;
+}
+
+.mode-emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.mode-card h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.mode-card p {
+    font-size: 13px;
+    color: #999999;
+}
+
+.screen-header {
+    margin-bottom: 24px;
+}
+
+.back-arrow {
+    font-size: 22px;
+    cursor: pointer;
+    color: #111111;
+}
+
+.screen-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #166534;
+    margin-bottom: 24px;
+}
+
+.ingredient-input {
+    width: 100%;
+    padding: 14px;
+    background: #f0f0f0;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    color: #111111;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.ingredient-input::placeholder {
+    color: #999999;
+}
+
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 32px;
+    min-height: 32px;
+}
+
+.tag {
+    background: #dcfce7;
+    border: 1.5px solid #166534;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 13px;
+    color: #166534;
+    cursor: pointer;
+}
+
+.section-label {
+    font-size: 14px;
+    color: #111111;
+    margin-bottom: 12px;
+}
+
+.difficulty-toggle {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+
+.diff-btn {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1.5px solid #e0e0e0;
+    background: #f0f0f0;
+    font-size: 15px;
+    color: #111111;
+    cursor: pointer;
+}
+
+.diff-btn.active {
+    background: #dcfce7;
+    border-color: #166534;
+    color: #166534;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.primary-btn {
+    width: 100%;
+    padding: 16px;
+    background: #166534;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+}
+
+.recipe-title {
+    font-size: 28px;
+    font-weight: 800;
+    color: #111111;
+    margin-bottom: 12px;
+}
+
+.recipe-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.badge {
+    background: #dcfce7;
+    border: 1.5px solid #166534;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 13px;
+    color: #166534;
+}
+
+.meta-time {
+    font-size: 13px;
+    color: #999999;
+}
+
+.ingredients-list {
+    list-style: none;
+    margin-bottom: 8px;
+}
+
+.ingredients-list li {
+    font-size: 15px;
+    color: #111111;
+    padding: 6px 0;
+}
+
+
+.steps-list {
+    list-style: none;
+    padding: 0;
+}
+
+.steps-list li {
+    display: flex;
+    gap: 12px;
+    font-size: 15px;
+    color: #111111;
+    padding: 8px 0;
+    line-height: 1.5;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.step-num {
+    background: #166534;
+    color: white;
+    border-radius: 999px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.budget-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.budget-card {
+    background: #f0f0f0;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 16px;
+    padding: 20px 24px;
+    cursor: pointer;
+}
+
+.budget-card.active {
+    background: #dcfce7;
+    border-color: #166534;
+}
+
+.budget-card h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.budget-card p {
+    font-size: 13px;
+    color: #999999;
+}
+
+.results-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.restaurant-card {
+    background: #f0f0f0;
+    border-radius: 16px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
+}
+
+.restaurant-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111111;
+    margin-bottom: 4px;
+}
+
+.restaurant-card .cuisine {
+    font-size: 13px;
+    color: #999999;
+    margin-bottom: 8px;
+}
+
+.restaurant-card .restaurant-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #777777;
+}
+
+.restaurant-card .rating {
+    color: #166534;
+    font-weight: 600;
+}
+
+.secondary-btn {
+    width: 100%;
+    padding: 14px;
+    background: transparent;
+    border: 1.5px solid #166534;
+    border-radius: 999px;
+    color: #166534;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 8px;
+}
