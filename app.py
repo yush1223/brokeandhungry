@@ -31,7 +31,7 @@ def recipe():
                 "content": "I have " + ingredients_text + ". Give me a " + difficulty + " recipe using these as the main ingredients. You can assume I have basic pantry staples like salt, pepper, oil, and butter. Do not add any other main ingredients I haven't listed. IMPORTANT: If the ingredients listed cannot realistically make a proper meal that a person would actually eat, respond with this JSON: {\"error\": \"These ingredients don't work together\", \"suggestion\": \"try adding [one ingredient]\"}. Otherwise respond with ONLY a JSON object in this exact format, no other text: {\"name\": \"Recipe Name\", \"cook_time\": \"X mins\", \"difficulty\": \"beginner\", \"ingredients\": [\"ingredient 1\", \"ingredient 2\"], \"steps\": [\"step 1\", \"step 2\", \"step 3\"]}"
             }
         ],
-        model="qwen-qwq-32b",
+        model="openai/gpt-oss-120b",
     )
     
     response_text = chat_completion.choices[0].message.content
