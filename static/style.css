@@ -19,10 +19,16 @@ body {
     padding: 48px 24px 32px;
     min-height: 100vh;
     flex-direction: column;
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .screen.active {
     display: flex;
+}
+
+.screen.active.fade-in {
+    opacity: 1;
 }
 
 .logo {
@@ -50,11 +56,14 @@ body {
     border-radius: 16px;
     padding: 32px 24px;
     cursor: pointer;
-    transition: background 0.15s;
+    box-shadow: 0 1px 3px rgba(17, 17, 17, 0.06);
+    transition: background 0.15s, transform 0.1s ease, box-shadow 0.15s ease;
 }
 
 .mode-card:active {
     background: #dcfce7;
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
 }
 
 .mode-emoji {
@@ -124,6 +133,11 @@ body {
     font-size: 13px;
     color: #166534;
     cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.tag:active {
+    transform: scale(0.94);
 }
 
 .section-label {
@@ -147,6 +161,11 @@ body {
     font-size: 15px;
     color: #111111;
     cursor: pointer;
+    transition: transform 0.1s ease;
+}
+
+.diff-btn:active {
+    transform: scale(0.97);
 }
 
 .diff-btn.active {
@@ -170,6 +189,13 @@ body {
     font-weight: 700;
     cursor: pointer;
     letter-spacing: 0.5px;
+    box-shadow: 0 2px 8px rgba(22, 101, 52, 0.25);
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 4px rgba(22, 101, 52, 0.2);
 }
 
 .recipe-title {
@@ -244,7 +270,7 @@ body {
 .budget-cards {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
     margin-top: 24px;
 }
 
@@ -254,6 +280,13 @@ body {
     border-radius: 16px;
     padding: 20px 24px;
     cursor: pointer;
+    box-shadow: 0 1px 3px rgba(17, 17, 17, 0.06);
+    transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.budget-card:active {
+    transform: scale(0.98);
+    box-shadow: 0 1px 2px rgba(17, 17, 17, 0.04);
 }
 
 .budget-card.active {
@@ -284,7 +317,8 @@ body {
     background: #f0f0f0;
     border-radius: 16px;
     padding: 16px 20px;
-    margin-bottom: 12px;
+    margin-bottom: 14px;
+    box-shadow: 0 1px 3px rgba(17, 17, 17, 0.06);
 }
 
 .restaurant-card h3 {
@@ -298,6 +332,11 @@ body {
     font-size: 13px;
     color: #999999;
     margin-bottom: 8px;
+}
+
+.restaurant-card .price-level {
+    color: #166534;
+    font-weight: 600;
 }
 
 .restaurant-card .restaurant-meta {
@@ -322,4 +361,43 @@ body {
     font-size: 14px;
     cursor: pointer;
     margin-top: 8px;
+    transition: transform 0.1s ease, background 0.15s ease;
+}
+
+.secondary-btn:active {
+    transform: scale(0.98);
+    background: #dcfce7;
+}
+
+.loading-state {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 64px 0;
+}
+
+.pulse-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: #166534;
+    animation: pulse 1.2s ease-in-out infinite;
+}
+
+.loading-text {
+    font-size: 14px;
+    color: #999999;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
 }

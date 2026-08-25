@@ -58,15 +58,21 @@
     <div class="screen-header">
         <span class="back-arrow" onclick="showScreen('screen-cook')">←</span>
     </div>
-    <h1 class="recipe-title" id="recipe-name"></h1>
-    <div class="recipe-meta">
-        <span class="badge" id="recipe-difficulty"></span>
-        <span class="meta-time" id="recipe-time"></span>
+    <div id="recipe-loading" class="loading-state">
+        <div class="pulse-dot"></div>
+        <p class="loading-text">finding your recipe...</p>
     </div>
-    <p class="section-label">Ingredients:</p>
-    <ul class="ingredients-list" id="recipe-ingredients"></ul>
-    <p class="section-label" style="margin-top: 24px;">Steps:</p>
-    <ul class="steps-list" id="recipe-steps"></ul>
+    <div id="recipe-content">
+        <h1 class="recipe-title" id="recipe-name"></h1>
+        <div class="recipe-meta">
+            <span class="badge" id="recipe-difficulty"></span>
+            <span class="meta-time" id="recipe-time"></span>
+        </div>
+        <p class="section-label">Ingredients:</p>
+        <ul class="ingredients-list" id="recipe-ingredients"></ul>
+        <p class="section-label" style="margin-top: 24px;">Steps:</p>
+        <ul class="steps-list" id="recipe-steps"></ul>
+    </div>
 </div>
 
 <div class="screen" id="screen-find">
@@ -103,6 +109,10 @@
     <div class="results-meta">
         <span class="badge" id="budget-badge"></span>
         <span class="meta-time" id="location-badge">finding location...</span>
+    </div>
+    <div id="restaurants-loading" class="loading-state">
+        <div class="pulse-dot"></div>
+        <p class="loading-text">finding cheap eats near you...</p>
     </div>
     <div id="restaurant-cards"></div>
     <button class="secondary-btn" onclick="findMore()">find more?</button>
