@@ -6,8 +6,8 @@ A mobile-optimized web app that helps broke college students in NYC either cook 
 
 ## What it does
 
-- **Cook Something** — list the ingredients in your fridge and a difficulty level, and an LLM generates a recipe (name, cook time, ingredients, step-by-step instructions) using only what you have.
-- **Find Something** — pick a budget, and the app uses your GPS location to find nearby cheap restaurants via Google Places, filtered by price level.
+- **Cook Something** — list the ingredients in your fridge and a difficulty level, and an LLM generates a recipe (name, cook time, ingredients, step-by-step instructions) using only what you have, plus an estimated cost per serving compared to eating out. Don't like it? Get a different recipe from the same ingredients in one tap.
+- **Find Something** — uses your GPS location to find the closest cheap restaurants via Google Places, showing only places open right now, with a budget slider and cuisine filters.
 
 ## Tech stack
 

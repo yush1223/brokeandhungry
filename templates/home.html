@@ -27,7 +27,7 @@
                 <h2>Cook Something.</h2>
                 <p>what's in your fridge?</p>
             </div>
-            <div class="mode-card" onclick="showScreen('screen-find')">
+            <div class="mode-card" onclick="findRestaurants()">
                 <span class="mode-emoji">📍</span>
                 <h2>Find Something.</h2>
                 <p>cheap eats near you.</p>
@@ -41,8 +41,13 @@
     </div>
     <h1 class="screen-title">What's in your fridge?</h1>
     
-    <input type="text" id="ingredient-input" class="ingredient-input" placeholder="add an ingredient...">
+    <input type="text" id="ingredient-input" class="ingredient-input" placeholder="add an ingredient..."
+           autocomplete="off" enterkeyhint="done">
+    <p class="inline-error" id="cook-error"></p>
     <div id="tags-container" class="tags-container"></div>
+
+    <p class="section-label">Quick add</p>
+    <div id="quick-add" class="quick-add"></div>
 
     <p class="section-label">How adventurous are you?</p>
     <div class="difficulty-toggle">
@@ -67,48 +72,45 @@
         <div class="recipe-meta">
             <span class="badge" id="recipe-difficulty"></span>
             <span class="meta-time" id="recipe-time"></span>
+            <span class="meta-time" id="recipe-servings"></span>
+        </div>
+        <div class="cost-card" id="recipe-cost">
+            <p class="cost-amount" id="recipe-cost-amount"></p>
+            <p class="cost-compare" id="recipe-cost-compare"></p>
         </div>
         <p class="section-label">Ingredients:</p>
         <ul class="ingredients-list" id="recipe-ingredients"></ul>
         <p class="section-label" style="margin-top: 24px;">Steps:</p>
         <ul class="steps-list" id="recipe-steps"></ul>
-    </div>
-</div>
 
-<div class="screen" id="screen-find">
-    <div class="screen-header">
-        <span class="back-arrow" onclick="showScreen('screen-home')">←</span>
-    </div>
-    <h1 class="screen-title">Cheap Eats Near You</h1>
-    <p class="tagline">what's your budget?</p>
-
-    <div class="budget-cards">
-        <div class="budget-card active" onclick="selectBudget('10', this)">
-            <h2>Under $10</h2>
-            <p>bare minimum mode</p>
-        </div>
-        <div class="budget-card" onclick="selectBudget('15', this)">
-            <h2>Under $15</h2>
-            <p>treat yourself a little</p>
-        </div>
-        <div class="budget-card" onclick="selectBudget('20', this)">
-            <h2>Under $20</h2>
-            <p>big spender energy</p>
+        <div class="recipe-actions">
+            <p class="inline-error" id="recipe-error"></p>
+            <button class="primary-btn" onclick="tryAnotherRecipe()">TRY ANOTHER RECIPE</button>
+            <button class="secondary-btn" onclick="findRestaurants()">find cheap eats instead?</button>
         </div>
     </div>
-
-    <div class="spacer"></div>
-    <button class="primary-btn" onclick="findRestaurants()">FIND FOOD</button>
 </div>
 
 <div class="screen" id="screen-restaurants">
     <div class="screen-header">
-        <span class="back-arrow" onclick="showScreen('screen-find')">←</span>
+        <span class="back-arrow" onclick="showScreen('screen-home')">←</span>
     </div>
     <h1 class="screen-title">Here's what's nearby</h1>
-    <div class="results-meta">
-        <span class="badge" id="budget-badge"></span>
-        <span class="meta-time" id="location-badge">finding location...</span>
+    <div class="budget-filter">
+        <div class="budget-filter-header">
+            <span class="section-label">Budget</span>
+            <span class="budget-value" id="budget-value">under $20</span>
+        </div>
+        <input type="range" id="budget-slider" class="budget-slider" min="0" max="2" step="1" value="1"
+               style="--fill: 50%" oninput="previewBudget(this.value)" onchange="setBudget(this.value)">
+        <div class="budget-ticks"><span>$10</span><span>$20</span><span>$30</span></div>
+    </div>
+    <div class="cuisine-filter">
+        <span class="section-label">Cuisine</span>
+        <button class="cuisine-select" onclick="openCuisineMenu()">
+            <span id="cuisine-current">🍽️ All cuisines</span>
+            <span class="chevron">▾</span>
+        </button>
     </div>
     <div id="restaurants-loading" class="loading-state">
         <div class="pulse-dot"></div>
@@ -117,6 +119,14 @@
     <div id="restaurant-cards"></div>
     <button class="secondary-btn" onclick="findMore()">find more?</button>
 </div>
+
+    <div class="sheet-backdrop" id="cuisine-sheet" onclick="if (event.target === this) closeCuisineMenu()">
+        <div class="sheet">
+            <div class="sheet-handle"></div>
+            <p class="sheet-title">What are you craving?</p>
+            <div id="cuisine-options"></div>
+        </div>
+    </div>
 
     <script src="/static/app.js"></script>
 </body>
